@@ -4,6 +4,7 @@ package co.neuon.Objects;
 import co.neuon.Window;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Rect extends GameObject {
 
@@ -18,19 +19,9 @@ public class Rect extends GameObject {
         setY(y);
     }
 
-    public Rect(Window window, int width, int height, int x, int y, Color color){
-        super(window);
-        this.width = width;
-        this.height = height;
-        setX(x);
-        setY(y);
-        this.color = color;
-    }
-
 
     @Override
     public void tick() {
-
     }
     @Override
     public void render(Graphics g) {

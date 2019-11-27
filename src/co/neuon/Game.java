@@ -29,6 +29,17 @@ public class Game {
         gameObjects.put(rect.getID(), rect);
         return rect;
     }
+    public Rect createPlatform(int width, int height, int x, int y){
+        Rect rect = new Platform(window, width, height, x, y);
+        gameObjects.put(rect.getID(), rect);
+        return rect;
+    }
+    public Rect createPlayer(int width, int height, int x, int y){
+        Rect rect = new Player(window, width, height, x, y);
+        gameObjects.put(rect.getID(), rect);
+        return rect;
+    }
+
     public Text createText(String string, int x, int y){
         Text text = new Text(window, string, x, y);
         gameObjects.put(text.getID(), text);

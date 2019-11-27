@@ -10,7 +10,7 @@ public abstract class GameObject {
     Window window;
 
     private int objectID;
-    private float x, y;
+    float x, y;
 
     public GameObject(Window window){
         this.window = window;
@@ -37,6 +37,17 @@ public abstract class GameObject {
     public void setX(float x) {
         this.x = x;
     }
+
+    public float getX(){
+        return x;
+    }
+
+    public float getY(){
+        return y;
+    }
+    double a = 123.0;
+
+
 
     public void setY(float y) {
         this.y = y;

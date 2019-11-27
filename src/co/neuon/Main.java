@@ -9,7 +9,6 @@ public class Main implements Runnable {
 
     public static void main(String[] args){
         new Main();
-        new Main();
     }
 
     Window window;
@@ -44,24 +43,27 @@ public class Main implements Runnable {
             //FPS
             fpsCounter = game.createText("FPS: ", 2, 12);
 
-            game.createRect(130, 65, 15, 15);
-            game.createText("Client", 60, 32);
+            game.createPlatform(200,20, 100, 300);
+            game.createPlayer(20,60,200,100);
 
-            //TextBox 'IP:'
-            int ipY = 40;
-            game.createRect(120, 14, 20, ipY);
-            game.createText("IP:", 22, ipY+12);
-            input = game.createText("", 38, ipY+12);
-
-
-            int connectY = 60;
-            game.createRect(60, 14, 50, connectY);
-            game.createText("Connect", 56, connectY+12);
-
-            //Player Character
-//            game.createCircle(50, 50, 50);
-            //Cursor follower
-//            game.createCursor();
+//            game.createRect(130, 65, 15, 15);
+//            game.createText("Client", 60, 32);
+//
+//            //TextBox 'IP:'
+//            int ipY = 40;
+//            game.createRect(120, 14, 20, ipY);
+//            game.createText("IP:", 22, ipY+12);
+//            input = game.createText("", 38, ipY+12);
+//
+//
+//            int connectY = 60;
+//            game.createRect(60, 14, 50, connectY);
+//            game.createText("Connect", 56, connectY+12);
+//
+//            //Player Character
+////            game.createCircle(50, 50, 50);
+//            //Cursor follower
+////            game.createCursor();
         });
 
         connect = ()->{

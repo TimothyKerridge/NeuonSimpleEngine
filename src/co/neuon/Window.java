@@ -22,7 +22,7 @@ public class Window extends JComponent {
 
     public Main main;
     JFrame frame;
-    int screenWidth = 960, screenHeight = 540;
+    public int screenWidth = 960, screenHeight = 540;
 
     LinkedList<GameObject> objectsToRender = new LinkedList<>();
     HashMap<Integer, Key> keys = new HashMap<>();
@@ -53,6 +53,7 @@ public class Window extends JComponent {
         keys.put(VK_UP, new Key());
         keys.put(VK_DOWN, new Key());
         keys.put(VK_BACK_SPACE, new Key());
+        keys.put(VK_SPACE, new Key());
         mouse1 = new Key();
         keys.put(-1, mouse1);//Mouse1
     }
@@ -60,7 +61,7 @@ public class Window extends JComponent {
         frame = new JFrame("Simple Colab Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(screenWidth, screenHeight);
-        frame.setLocation(760, 0);
+        frame.setLocation(0, 0);
         setDoubleBuffered(true);
         frame.add(this);
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -99,11 +100,24 @@ public class Window extends JComponent {
         frame.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                switch ((int)e.getKeyChar()){
-                    case(8): main.input.removeLastCharacter();break;
-                    case(10): main.connect.execute(); break;//enter
-                    case(9): break;//esc
-                    default: main.input.addCharacter(e.getKeyChar());
+                int key = (int) e.getKeyChar();
+                try {
+                    switch (key) {
+                        case (8):
+                            main.input.removeLastCharacter();
+                            break;
+                        case (10):
+                            main.connect.execute();
+                            break;//enter
+                        case (27): System.exit(1);
+                            break;//esc
+                        case (32):
+                            break;//space
+                        default:
+                            main.input.addCharacter(e.getKeyChar());
+                    }
+                }catch (Exception ex){ex.printStackTrace();
+                    System.out.println(key);
                 }
             }
             @Override
@@ -126,9 +140,10 @@ public class Window extends JComponent {
     }
 
     public void tick(){
-        if(this.getMousePosition() != null) {
-            mouseX = this.getMousePosition().x;
-            mouseY = this.getMousePosition().y;
+        Point p = this.getMousePosition();
+        if(p != null) {
+            mouseX = p.x;
+            mouseY = p.y;
         }
     }
 
