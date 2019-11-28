@@ -60,19 +60,10 @@ public class Player extends Rect {
 
         Platform plat = collisionDetect();
         if(plat != null) {
-            boolean side;
-            if(x > lastX) { left(plat); side = true; }
-            else if(x < lastX) right(plat); side = true;
-//            if(!side){
-//                if(y > lastY) top(plat);
-//                if(y < lastY) bottom(plat);
-//            }
-//            float[] col = lineRect(lastX, lastY, x, y, plat.x, plat.y, plat.width, plat.height);
-//            if(col != null) {
-//                if (col[0] == 0) {
-//                    left(plat);
-//                }
-//            }
+            if(lastY > plat.y+plat.height && y <= plat.y+plat.height) bottom(plat);
+            if(lastY+height < plat.y && y+height >= plat.y) top(plat);
+            if(lastX > plat.x+plat.width && x <= plat.x+plat.width) right(plat);
+            if(lastX +width < plat.x && x + width >= plat.x) left(plat);
         }
         else{
             isGrounded = false;
@@ -97,11 +88,11 @@ public class Player extends Rect {
     }
     public void left(Platform plat){
         System.out.println("left");
-        x = plat.x - width;
+        x = plat.x - width-1;
     }
     public void right(Platform plat){
         System.out.println("right");
-        x = plat.x + plat.width;
+        x = plat.x + plat.width+1;
     }
 
 
